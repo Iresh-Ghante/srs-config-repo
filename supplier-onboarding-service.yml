@@ -13,6 +13,12 @@ spring:
     properties:
       hibernate:
         default_schema: suppliers
+ # kafka Configuration
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
 # JWT Secret - much safer to manage it here than in the service's code
 application:
