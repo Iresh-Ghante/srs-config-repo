@@ -1,4 +1,3 @@
-# Properties for the API Gateway
 server:
   port: 8080
 
@@ -7,6 +6,7 @@ spring:
     gateway:
       routes:
         - id: supplier-onboarding-service-route
-          uri: lb://SUPPLIER-ONBOARDING-SERVICE
+          # The URI must match the service name registered with Eureka
+          uri: lb://supplier-onboarding-service
           predicates:
             - Path=/api/auth/**, /api/v1/suppliers/**
