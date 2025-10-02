@@ -21,8 +21,8 @@ spring:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
 # JWT Secret - much safer to manage it here than in the service's code
-application:
-  security:
-    jwt:
-      secret-key: your-super-secret-and-long-key-for-signing-jwt-tokens-which-should-be-in-a-vault
-      expiration: 86400000
+  application:
+    security:
+      jwt:
+        secret-key: your-super-secret-and-long-key-for-signing-jwt-tokens-which-should-be-in-a-vault
+        expiration: 86400000
