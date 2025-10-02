@@ -1,29 +1,27 @@
-# Properties for the supplier service
 server:
   port: 8081
+
+# Custom application properties are cleaner when grouped under a non-spring prefix
+app:
+  security:
+    jwt:
+      secret-key: shjsfhdsjdkjfhsifoiewuroiwuru=
+      expiration: 86400000 # 24 hours in milliseconds
 
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/supplier_db
     username: admin
-    password: password
+    password: password # For production, use environment variables or a vault
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: update # Caution: Use 'validate' or 'none' in production
     properties:
       hibernate:
         default_schema: suppliers
- # kafka Configuration
   kafka:
     producer:
       bootstrap-servers: localhost:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-
-# JWT Secret - much safer to manage it here than in the service's code
-  application:
-    security:
-      jwt:
-        secret-key: your-super-secret-and-long-key-for-signing-jwt-tokens-which-should-be-in-a-vault
-        expiration: 86400000
