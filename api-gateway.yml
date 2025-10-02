@@ -6,7 +6,6 @@ spring:
     gateway:
       mvc:
         routes:
-        - :
         - id: supplier-onboarding-service-route
           # The URI must match the service name registered with Eureka
           uri: lb://supplier-onboarding-service
