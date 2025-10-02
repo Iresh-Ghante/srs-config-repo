@@ -1,0 +1,16 @@
+# Properties for the API Gateway
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: supplier-onboarding-service-route
+          uri: lb://supplier-onboarding-service
+          predicates:
+            - Path=/api/auth/**, /api/v1/suppliers/**
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: false
