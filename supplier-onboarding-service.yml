@@ -1,0 +1,22 @@
+# Properties for the supplier service
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/supplier_db
+    username: admin
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        default_schema: suppliers
+
+# JWT Secret - much safer to manage it here than in the service's code
+application:
+  security:
+    jwt:
+      secret-key: your-super-secret-and-long-key-for-signing-jwt-tokens-which-should-be-in-a-vault
+      expiration: 86400000
