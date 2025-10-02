@@ -7,7 +7,7 @@ spring:
     gateway:
       routes:
         - id: supplier-onboarding-service-route
-          uri: lb://supplier-onboarding-service
+          uri: lb://SUPPLIER-ONBOARDING-SERVICE
           predicates:
             - Path=/api/auth/**, /api/v1/suppliers/**
 eureka:
