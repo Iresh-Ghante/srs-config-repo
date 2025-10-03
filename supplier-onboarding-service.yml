@@ -5,7 +5,7 @@ server:
 app:
   security:
     jwt:
-      secret-key: shjsfhdsjdkjfhsifoiewuroiwuru=
+      secret-key: F7xN3w4sA9b8K2pQ5mR0V1yC6tU3dL8eJ0zH9gT4bW7nQ2xP1rS5vY8cZ3fM0uN
       expiration: 86400000 # 24 hours in milliseconds
 
 spring:
