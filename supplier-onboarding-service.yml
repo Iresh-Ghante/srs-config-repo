@@ -25,3 +25,21 @@ spring:
       bootstrap-servers: localhost:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+# Add this section to the file
+management:
+  health:
+    circuitbreakers:
+      enabled: true # Expose circuit breaker health in the /actuator/health endpoint
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      product-catalog: # This is a custom name for our circuit breaker instance
+        failure-rate-threshold: 50 # Trip if 50% of requests fail
+        slow-call-duration-threshold: 2000 # Consider a call slow if it takes > 2 seconds
+        slow-call-rate-threshold: 80 # Trip if 80% of calls are slow
+        permitted-number-of-calls-in-half-open-state: 3 # Number of trial requests
+        sliding-window-type: COUNT_BASED
+        sliding-window-size: 10 # Monitor the last 10 requests
+        wait-duration-in-open-state: 10000 # Stay open for 10 seconds before switching to half-open
